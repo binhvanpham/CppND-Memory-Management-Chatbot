@@ -1,0 +1,9 @@
+1.  The first task is very important:
+        It will force you to study the relationship between the class objects: 
+           Which is constructed
+           Which is just passed along.
+        Notice how you close the chatbot, there are 2 statements "ChatBot Destructor" printed out.
+        Study the relationship between chatBot, graphNode, and chatLogic.
+        Notice chatLogic create a vector of nodes.  During chatlogic destructor, each node is also destroyed.
+        Now there is 2 destructor to chatbot.  One from chatLogic, and one from graphNode.  Choose the correct one
+
