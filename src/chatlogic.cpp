@@ -176,7 +176,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                             edge->SetChildNode((*childNode).get());
                             edge->SetParentNode((*parentNode).get());
 
-                            //_edges.push_back(edge);
+                            //edges.push_back(edge);
 
                             // find all keywords for current node
                             AddAllTokensToElement("KEYWORD", tokens, *edge);
@@ -230,10 +230,15 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
     // add chatbot to graph root node
     ChatBot mychatbot("../images/chatbot.png");
-    rootNode->MoveChatbotHere(std::move(mychatbot));
+    std::cout << "CL #1" << std::endl;
     mychatbot.SetRootNode(rootNode);
+    std::cout << "CL #2" << std::endl;
     mychatbot.SetChatLogicHandle(this);
-    SetChatbotHandle(&mychatbot);    
+    std::cout << "CL #3" << std::endl;
+    SetChatbotHandle(&mychatbot); 
+    std::cout << "CL #4" << std::endl;
+    rootNode->MoveChatbotHere(std::move(mychatbot));
+    std::cout << "CL #5" << std::endl;
     ////
     //// EOF STUDENT CODE
 }
