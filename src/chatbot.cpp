@@ -47,19 +47,18 @@ ChatBot::~ChatBot()
 
 //  Copy Constructor
 //--------------------
-ChatBot (const ChatBot &source) {
+ChatBot::ChatBot (const ChatBot &source) {
     std::cout << "ChatBot Copy Constructor" << std::endl;
-    _currentNode = source._currentNode;
     _rootNode    = source._rootNode;
     _chatLogic   = source._chatLogic; 
-
+    _chatLogic->SetChatbotHandle(this);
     _image       = new wxBitmap();
     *_image      = *(source._image);
 }
 
 //  Copy Assignment Operator
 //----------------------------
-ChatBot &operator = (const ChatBot &source) {
+ChatBot& ChatBot::operator= (const ChatBot &source) {
     std::cout << "ChatBot Copy Assignment Operator" << std::endl;
     if (this==&source)
         return *this;
@@ -67,7 +66,6 @@ ChatBot &operator = (const ChatBot &source) {
     delete _image;
     _image       = new wxBitmap();
     *_image      = *(source._image);
-    _currentNode = source._currentNode;
     _rootNode    = source._rootNode;
     _chatLogic   = source._chatLogic;
 
@@ -77,10 +75,9 @@ ChatBot &operator = (const ChatBot &source) {
 //  Move Constructor
 //  Source will no longer be usable
 //----------------------------------
-ChatBot (ChatBot &&source) {
+ChatBot::ChatBot (ChatBot &&source) {
     std::cout << "ChatBot Move Constructor" << std::endl;
     _image = source._image;
-    _currentNode  = source._currentNode;
     _rootNode     = source._rootNode;
     _chatLogic    = source._chatLogic;
     source._image        = NULL;
@@ -89,20 +86,20 @@ ChatBot (ChatBot &&source) {
     source._chatLogic    = nullptr;
 }
 
-//  Move Assignment
+//  Move Assignment Operator
 //  Source will also no longer be usable
 //---------------------------------------
-ChatBot &operator = (ChatBot &&source) {
+ChatBot& ChatBot::operator= (ChatBot &&source) {
     std::cout << "ChatBot Move Assignment Operator" << std::endl;
     if (this == &source)
         return *this;
 
     delete _image;
     _image       = source._image;
-    _currentNode = source._currentNode;
     _rootNode    = source._rootNode;
     _chatLogic   = source._chatLogic; 
 
+    std::cout << "Move Assignment Operator Done!" << std::endl;
     return *this;
 }
 

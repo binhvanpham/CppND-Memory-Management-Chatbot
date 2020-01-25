@@ -37,7 +37,7 @@ public:
 
     //  Copy assignment operator
     //----------------------------
-    ChatBot &operator= (const ChatBot &source);
+    ChatBot& operator= (const ChatBot &source);
 
     //  Move constructor
     //  Source will no longer be usable
@@ -46,7 +46,7 @@ public:
     
     //  Move assignment
     //-------------------
-    ChatBot &operator = (ChatBot &&source);     
+    ChatBot& operator= (ChatBot &&source);     
 
     ////
     //// EOF STUDENT CODE
